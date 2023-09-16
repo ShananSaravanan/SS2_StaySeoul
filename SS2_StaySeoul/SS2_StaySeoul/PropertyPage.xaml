@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SS2_StaySeoul.PropertyPage"
+             Title="Your Listings: ">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <ListView x:Name="propertyList" ItemsSource="{Binding PropertyList}" Margin="0" HeightRequest="100">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="0" MinimumHeightRequest="0">
+                                <Label Text="{Binding propertyName}" Margin="10,0,0,0" Grid.Row="0" Padding="0" FontSize="Default" />
+                                <Label Text="{Binding dateDetail}" TextColor="{Binding fontColor}" Grid.Row="1" Margin="10,0,0,0" FontSize="Default" Grid.ColumnSpan="2"/>
+                                <ImageButton Source="coindollar.png" Grid.Column="1" HorizontalOptions="End" Grid.RowSpan="2" Clicked="ImageButton_Clicked" ClassId="{Binding propertyName}" BackgroundColor="#FFFFFF"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Image Source="exit.png"  HorizontalOptions="EndAndExpand" WidthRequest="50" Margin="0,0,0,20">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ImageButton_Clicked_1"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

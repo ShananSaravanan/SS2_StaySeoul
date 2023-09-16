@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Name="contentpage" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title=""
+             x:Class="SS2_StaySeoul.PropertyPricexaml">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame HeightRequest="280" BorderColor="#000000" Margin="10">
+                <ListView x:Name="priceList" ItemsSource="{Binding  propertyPrices}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid BackgroundColor="{Binding color}" ClassId="{Binding ID}">
+									<Grid.ColumnDefinitions >
+										<ColumnDefinition Width="30"/>
+										<ColumnDefinition/>
+										<ColumnDefinition/>
+										<ColumnDefinition/>
+									</Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions >
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Image Source="{Binding iconName}" Grid.Row="0" Grid.Column="0" HeightRequest="20" VerticalOptions="Center" WidthRequest="10"></Image>
+                                    <Label  Text="{Binding dateDetail}" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="#000000"></Label>
+                                    <Label Text="{Binding price}" Grid.Row="0" Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="#000000"></Label>
+                                    <Label Text="{Binding dispRules}" Grid.Row="0" Grid.Column="3" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="#000000"></Label>
+                                    <Grid.GestureRecognizers>
+                                        <SwipeGestureRecognizer Swiped="SwipeGestureRecognizer_Left" Direction="Left"></SwipeGestureRecognizer>
+                                        <SwipeGestureRecognizer Swiped="SwipeGestureRecognizer_Right" Direction="Right" ></SwipeGestureRecognizer>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
+            <Frame>
+                <Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="15"/>
+						<RowDefinition Grid.Row="1"/>
+						<RowDefinition Grid.Row="2"/>
+					</Grid.RowDefinitions>
+
+
+
+                
+                <Label Text="From:" Grid.Column="0" Grid.Row="0" Margin="5,0,0,0" TextColor="#000000"/>
+                <Label Text="To:" Grid.Column="2" Grid.Row="0" Margin="10,0,0,0" TextColor="#000000"/>
+                <DatePicker x:Name="fromPicker" Grid.Column="0" Grid.Row="1" DateSelected="fromPicker_DateSelected" Grid.ColumnSpan="2"/>
+                <Label Text="📅" Grid.Column="1" Grid.Row="1" VerticalTextAlignment="Center" Margin="10,0,0,0" FontSize="Large"/>
+                <DatePicker x:Name="toPicker" Grid.Column="2" Grid.Row="1" DateSelected="toPicker_DateSelected"/>
+                    
+                <Label Text="📅" Grid.Column="3" Grid.Row="1" VerticalTextAlignment="Center" Margin="10,0,0,0" FontSize="Large"/>
+                <Label Text="On the weekend: " Grid.Column="0" Grid.Row="2" VerticalTextAlignment="Center" Grid.ColumnSpan="2" Margin="5,0,0,0" TextColor="#000000" />
+                    <Entry x:Name="WeekendEntry" Placeholder="0.00" Grid.Column="1" Grid.Row="2"  Keyboard="Numeric" HorizontalTextAlignment="Start" Margin="20,0,0,0" />
+                <Picker x:Name="WeekendPicker" Grid.Row="2"  Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,20,0"/>
+
+                <Label Text="On the holidays: " Grid.Column="0" Grid.Row="3" VerticalTextAlignment="Center" Grid.ColumnSpan="2" Margin="5,0,0,0" TextColor="#000000" />
+                    <Entry x:Name="holidayEntry" Placeholder="0.00" Grid.Column="1" Grid.Row="3"  Keyboard="Numeric" HorizontalTextAlignment="Start" Margin="20,0,0,0" />
+                <Picker x:Name="hoidayPicker"  Grid.Row="3"  Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,20,0"/>
+
+                <Label Text="On other days: " Grid.Column="0" Grid.Row="4" VerticalTextAlignment="Center" Grid.ColumnSpan="2" Margin="5,0,0,0" TextColor="#000000" />
+                <Entry x:Name="normalEntry" Placeholder="0.00" Grid.Column="1" Grid.Row="4"  Keyboard="Numeric" HorizontalTextAlignment="Start" Margin="20,0,0,0" />
+                <Picker x:Name="normalPicker" Grid.Row="4"  Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,20,0"/>
+
+                <Button Text="Set Price"  Grid.Column="2" Grid.Row="5" HorizontalOptions="End" Margin="0,0,20,0" Grid.ColumnSpan="2" Clicked="Button_Clicked"></Button> 
+
+
+            </Grid>
+            </Frame>
+            <ImageButton Source="back.png" WidthRequest="50" Margin="0,0,0,20" Clicked="ImageButton_Clicked" HorizontalOptions="End"></ImageButton>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
